@@ -1,0 +1,16 @@
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: githubtest-quota
+  namespace: githubtest
+  labels:
+    kubernetes.io/metadata.name: githubtest
+    backstage.io/kubernetes-id: githubtest
+    istio-injection: enabled
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
