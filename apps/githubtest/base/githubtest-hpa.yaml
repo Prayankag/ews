@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: githubtest-hpa
+  labels:
+    app: githubtest
+    version: 0.0.1
+    backstage.io/kubernetes-id: githubtest
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: githubtest
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75

@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: githubtest-vs
+  namespace: githubtest
+  labels:
+    app: githubtest
+    version: 0.0.1
+    backstage.io/kubernetes-id: githubtest
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - githubtest.diegoluisi.eti.br
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: githubtest-svc
+      weight: 100
